@@ -35,9 +35,8 @@ ingredients_list = st.multiselect(
 
 
 
-# I f ingredients _list is not null: then do everything below this line that is intended.
+# If ingredients _list is not null: then do everything below this line that is intended.
 if ingredients_list:
-   
 
     ingredients_string = ''
 
@@ -50,7 +49,6 @@ if ingredients_list:
         #st.subheader(fruit_chosen + 'Nutrition Information')
         #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen)
         
-
     #st.write(ingredients_string)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
@@ -58,14 +56,7 @@ if ingredients_list:
 
    #st.write(my_insert_stmt)
    #st.stop()
-    
-    
-
-    #if ingredients_string:
-        #session.sql(my_insert_stmt).collect()
-        #st.success('Your Smoothie is ordered!', icon="✅")
-
-    
+      
      #st.write(my_insert_stmt)
     time_to_insert = st.button ('Submit Order')
 
@@ -73,8 +64,10 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect ()
         st.success('Your Smoothie is ordered '+name_on_order+'!', icon="✅")
     
- 
-
+ # This is  the secssion to display fruityvice nutrition information.
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
 
 
 
